@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { registrations } from "@/lib/data";
+import { donations } from "@/lib/data";
 import { requireAdmin } from "@/lib/server/adminAuth";
 
 export async function GET(req: NextRequest) {
@@ -11,5 +11,7 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  return NextResponse.json({ success: true, data: registrations });
+  // Mock data source uses `donations` for transactions.
+  return NextResponse.json({ success: true, data: donations });
 }
+
