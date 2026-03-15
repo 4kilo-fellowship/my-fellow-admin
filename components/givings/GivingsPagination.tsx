@@ -1,26 +1,28 @@
+"use client";
+
 import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface RegistrationsPaginationProps {
+interface GivingsPaginationProps {
   page: number;
   setPage: (page: number) => void;
   limit: number;
   setLimit: (limit: number) => void;
   totalPages: number;
-  totalRegistrations: number;
+  totalGivings: number;
   currentCount: number;
 }
 
-const RegistrationsPagination = ({
+const GivingsPagination = ({
   page,
   setPage,
   limit,
   setLimit,
   totalPages,
-  totalRegistrations,
+  totalGivings,
   currentCount,
-}: RegistrationsPaginationProps) => {
-  if (totalRegistrations === 0) return null;
+}: GivingsPaginationProps) => {
+  if (totalGivings === 0) return null;
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-6 px-8 bg-white rounded-4xl border border-gray-100 shadow-xl shadow-gray-200/30 transition-all duration-300">
@@ -28,13 +30,13 @@ const RegistrationsPagination = ({
         <div className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] bg-gray-50/80 px-4 py-2 rounded-xl border border-gray-100">
           Showing{" "}
           <span className="text-gray-900 font-bold">{currentCount}</span> of{" "}
-          <span className="text-gray-900 font-bold">{totalRegistrations}</span>{" "}
-          Entries
+          <span className="text-gray-900 font-bold">{totalGivings}</span>{" "}
+          Records
         </div>
 
         <div className="flex items-center gap-3">
           <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
-            Per Page:
+            Rows:
           </span>
           <select
             value={limit}
@@ -66,7 +68,6 @@ const RegistrationsPagination = ({
 
         <div className="flex items-center gap-1.5">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
-            // Smart pagination for many pages
             if (
               totalPages > 7 &&
               p !== 1 &&
@@ -113,4 +114,4 @@ const RegistrationsPagination = ({
   );
 };
 
-export default RegistrationsPagination;
+export default GivingsPagination;
